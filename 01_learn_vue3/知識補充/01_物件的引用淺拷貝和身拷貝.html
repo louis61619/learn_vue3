@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 物件的引用賦值 -->
+  <!-- <script>
+    const abc = {
+      foo: "888"
+    }
+
+    const ooo = abc
+    ooo.foo = "999"
+    console.log(abc)
+  </script> -->
+
+  <!-- 物件的淺拷貝 -->
+  <!-- <script>
+    const abc = {
+      foo: "888"
+    }
+    const ooo = Object.assign({}, abc)
+    ooo.foo = "999"
+    console.log(abc)
+  </script> -->
+
+  <!-- 物件的深拷貝 -->
+  <script>
+    const abc = {
+      foo: {
+        name: "kkkk"
+      }
+    }
+    const obj = JSON.parse(JSON.stringify(abc))
+    obj.foo.name = "James"
+    console.log(abc)
+  </script>
+</body>
+</html>

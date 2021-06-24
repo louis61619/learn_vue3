@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app"></div>
+  <template id="my-app">
+    <div>
+      <h2>{{message}}</h2>
+      <input type="text" v-model="message">
+      <button @click="query">網路請求</button>
+    </div>
+  </template>
+  <script src="../js/vue.js"></script>
+  <script>
+    const app = {
+      template: '#my-app',
+      data() {
+        return {
+          // 偵聽數據變化時進行邏輯的處理
+          message: "Hello World"
+        }
+      },
+      watch: {
+        // 偵聽data屬性
+        message(newValue, oldValue) {
+          console.log(newValue, oldValue)
+          this.query()
+          // 防抖 就是實現一個timer在觸發某個事件的情況下 將timer清除重新掛載 會一直往後延
+        }
+      },
+      methods: {
+        query() {
+          setTimeout(() => {
+            alert('請求成功')
+          }, 1000)
+        }
+      },
+    }
+    Vue.createApp(app).mount('#app')
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .active {
+      color: rgb(9, 119, 119);
+    }
+    .title {
+      font-size: 50px;
+    }
+    .newTitle {
+      border-bottom: 1px solid green;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app"></div>
+  <template id="my-app">
+    <div>
+      <!-- 物件語法 -->
+      <h2 :class="{'active': isActive}">{{message}}</h2>
+
+      <!-- 可以有多個鍵值對 -->
+      <h2 :class="{'active': isActive, 'title': true}">{{message}}</h2>
+      <h2 :class="{'active': isActive, title: true}">{{message}}</h2>
+
+      <!-- 將對象放到單獨的屬性中 -->
+      <h2 :class="classObj">{{message}}</h2>
+
+      <!-- 將返回的物件放到方法中 -->
+      <h2 :class="getClassObj()">{{message}}</h2>
+
+      <button @click="toggle">切換</button>
+    </div>
+  </template>
+  <script src="../js/vue.js"></script>
+  <script>
+    const app = {
+      template: '#my-app',
+      data() {
+        return {
+          message: "Hello World",
+          isActive: true,
+          classObj: {
+            active: true, 
+            title: true
+          }
+        }
+      },
+      methods: {
+        toggle() {
+          this.isActive = !this.isActive
+        },
+        getClassObj() {
+          return {
+            active: true, 
+            title: true
+          }
+        }
+      },
+    }
+    Vue.createApp(app).mount('#app')
+  </script>
+</body>
+
+</html>

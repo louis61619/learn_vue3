@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app"></div>
+  <!-- template是用來被javascript讀取的html語法，不會被渲染 -->
+  <template id="counter">
+    <div>
+      <h2>{{ counter }}</h2>
+      <button @click="increment">+1</button>
+      <button @click="decrement">-1</button>
+      <button @click="btnClick">this</button>
+    </div>
+  </template>
+  
+  <script src="../js/vue.js"></script>
+  <script>
+    const app = Vue.createApp({
+      template: '#counter',
+      data() {
+        return {
+          counter: 100
+        }
+      },
+      methods: { // 外層並沒有定義作用域 而只是定義物件
+        increment() {
+          this.counter+=1
+        },
+        decrement() {
+          this.counter-=1
+        },
+        btnClick: () => {
+          // 箭頭函數指向window
+          // 在箭頭函數中是不綁定this的，this指向也不可被改變
+          console.log(this)
+        }
+      },
+    })
+    app.mount('#app')
+
+    const foo = function() {
+      console.log(this)
+    }
+    // const foo = () => { // 箭頭函數會從上層作用域來找this
+    //   console.log(this)
+    // }
+    foo() // 隱式綁定 window.foo
+
+    const obj = {bar: foo}
+    obj.bar()
+
+    const info = {name: 'Renny'}
+    // 顯示綁定
+    const newFoo = foo.bind(info) // bind會返回一個新的函數
+    newFoo()
+  </script>
+</body>
+</html>

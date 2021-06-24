@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app"></div>
+  <template id="my-app">
+    <div>
+      <!-- 綁定textarea -->
+      <label for="intro">
+        <textarea id="intro" v-model="intro" cols="30" rows="10"></textarea>
+      </label>
+      <h2>{{intro}}</h2>
+
+      <!-- 綁定checkbox -->
+      <!-- 單選框 -->
+      <label for="agree">
+        <input id="agree" type="checkbox" v-model="isAgree">同意協議
+      </label>
+      <h2>{{isAgree}}</h2>
+
+      <!-- 多選框 -->
+      <label v-for="item in bobbies" :for="item">
+        <input :id="item" type="checkbox" v-model="fav" :value="item">{{ item }}
+      </label>
+      <h2>{{fav}}</h2>
+
+      <!-- 綁定radio -->
+      <label for="male">
+        <input type="radio" id="male" v-model="gender" value="male">male
+      </label>
+      <label for="female">
+        <input type="radio" id="female" v-model="gender" value="female">female
+      </label>
+      <h2>{{ gender }}</h2>
+
+      <!-- 綁定select -->
+      <!-- 單選 -->
+      <select v-model="fruit">
+        <option value="apple">蘋果</option>
+        <option value="orange">橘子</option>
+        <option value="banana">香蕉</option>
+      </select>
+      <h2>{{ fruit }}</h2>
+      <!-- 多選 -->
+      <select v-model="fruits" size="3" multiple>
+        <option value="apple">蘋果</option>
+        <option value="orange">橘子</option>
+        <option value="banana">香蕉</option>
+      </select>
+      <h2>{{ fruits }}</h2>
+    </div>
+  </template>
+  <script src="../js/vue.js"></script>
+  <script>
+    const app = {
+      template: '#my-app',
+      data() {
+        return {
+          intro: "Hello World",
+          isAgree: true,
+          bobbies: ["籃球", "小說", "足球"],
+          fav: [],
+          gender: "male",
+          fruit: "apple",
+          fruits: []
+        }
+      }
+    }
+    Vue.createApp(app).mount('#app')
+  </script>
+</body>
+
+</html>

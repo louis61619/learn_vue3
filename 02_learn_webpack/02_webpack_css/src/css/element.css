@@ -1,0 +1,11 @@
+.title {
+  font-size: 30px;
+  color: #12345678;
+  user-select: none;
+}
+
+.image-bg {
+  background-image: url('../images/00a4d6ba-f1f4-44d1-8ee1-e8c3009616b7.png');
+  width: 200px;
+  height: 200px;
+}

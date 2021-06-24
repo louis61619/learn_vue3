@@ -1,0 +1,1 @@
+import{o,c as e,l as n,a as l}from"./vendor.22e101ee.js";const s={data:()=>({message:"Hello Vite"})};s.render=function(n,l,s,t,a,r){return o(),e("h2",null,"Hellow Vite22222222")};console.log(1+2),console.log(n.join(["i","p"])),console.log(function(o,e){return o*e}(2,3));l(s).mount("#app");

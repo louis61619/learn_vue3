@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app"></div>
+  <template id="my-app">
+    <h2>遍歷陣列</h2>
+    <ul>
+      <li v-for="(item, index) in movies">{{ index }}-{{ item }}</li>
+    </ul>
+    <h2>遍歷物件</h2>
+    <h3 v-for="(value, key, index) in info">{{ key }}-{{ value }}-{{ index }}</h3>
+    <h2>遍歷數字</h2>
+    <h3 v-for="(num, index) in 10">{{index}}-{{num}}</h3>
+  </template>
+  <script src="../js/vue.js"></script>
+  <script>
+    const app = {
+      template: '#my-app',
+      data() {
+        return {
+          message: "Hello World",
+          movies: [
+            "星際穿越",
+            "盜夢空間",
+            "少年pie",
+            "信條"
+          ],
+          info: {
+            name: 'Renny',
+            age: 18,
+            height: 175
+          }
+        }
+      }
+    }
+    Vue.createApp(app).mount('#app')
+  </script>
+</body>
+
+</html>

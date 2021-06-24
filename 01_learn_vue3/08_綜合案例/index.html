@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      border-spacing: 0;
+      border: 1px solid rgb(163, 163, 163);
+    }
+    th, td {
+      border: 1px solid rgb(163, 163, 163);
+      padding: 5px 15px;
+      text-align: center;
+    }
+    th {
+      background-color: rgb(182, 194, 194);
+    }
+    .count {
+      padding: 0px 12px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app"></div>
+  <template id="my-app">
+    <template v-if="books.length" >
+      <table>
+        <thead>
+          <th>序號</th>
+          <th>書籍名稱</th>
+          <th>出版日期</th>
+          <th>價格</th>
+          <th>購買數量</th>
+          <th>操作</th>
+        </thead>
+        <tbody>
+          <tr v-for="item, index in books">
+            <td>{{ item.id }}</td>
+            <td>{{ item.name }}</td>
+            <td>{{ item.data }}</td>
+            <td>{{ filterPrice(item.price) }}</td>
+            <td>
+              <button :disabled="item.count <= 1" @click="decrement(index)">-1</button>
+              <span class="count">{{ item.count }}</span>
+              <button :disabled="item.count >= 99" @click="increment(index)">+1</button>
+            </td>
+            <td>
+              <button @click="deletebook(index)">移除</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <h2>total: {{ filterPrice(total) }}</h2>
+    </template>
+    <h2 v-else>
+      購物車為空
+    </h2>
+  </template>
+  <script src="../js/vue.js"></script>
+  <script src="./index.js"></script>
+</body>
+
+</html>

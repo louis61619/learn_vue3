@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app"></div>
+  <template id="my-app">
+    <div>
+      <!-- lazy修飾符 使用change事件並且enter才改變數據 -->
+      <!-- <input type="text" v-model.lazy="message"> -->
+
+      <!-- v-model永遠賦值為string類型 -->
+      <!-- 可以加上number -->
+      <!-- <input type="text" v-model.number="message">
+      <button @click="showMessageType">查看類型</button> -->
+
+      <!-- trim去除空格 -->
+      <input type="text" v-model.trim="message">
+      <button @click="showResult">查看類型</button>
+      <h2>{{message}}</h2>
+    </div>
+  </template>
+  <script src="../js/vue.js"></script>
+  <script>
+    const app = {
+      template: '#my-app',
+      data() {
+        return {
+          message: "Hello world"
+        }
+      },
+      methods: {
+        changeInputValue(evant) {
+          this.message = event.target.value
+        },
+        showMessageType() {
+          console.log(this.message, typeof this.message)
+        },
+        showResult() {
+          console.log(this.message)
+        }
+      },
+    }
+    Vue.createApp(app).mount('#app')
+  </script>
+</body>
+
+</html>

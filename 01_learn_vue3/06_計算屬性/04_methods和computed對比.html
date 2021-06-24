@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app"></div>
+  <template id="my-app">
+    <div>
+      <button @click="changeFirstName">改變firstName</button>
+      <h2>{{ fullName }}</h2>
+      <h2>{{ fullName }}</h2>
+      <h2>{{ fullName }}</h2>
+      <h2>{{ fullName }}</h2>
+      <h2>{{ getFullName() }}</h2>
+      <h2>{{ getFullName() }}</h2>
+      <h2>{{ getFullName() }}</h2>
+      <h2>{{ getFullName() }}</h2>
+    </div>
+  </template>
+  <script src="../js/vue.js"></script>
+  <script>
+    const app = {
+      template: '#my-app',
+      data() {
+        return {
+          message: "Hello World",
+          firstName: "HSIEH",
+          lastName: "JUNG-JUI",
+          score: 80,
+        }
+      },
+      computed: {
+        fullName() {
+          console.log("調用計算屬性")
+          return this.firstName + " " + this.lastName 
+        },
+      },
+      methods: {
+        getFullName() {
+          console.log("調用方法")
+          return this.firstName + " " + this.lastName 
+        },
+        changeFirstName() {
+          this.firstName = "Coder"
+        }
+      },
+    }
+    Vue.createApp(app).mount('#app')
+  </script>
+</body>
+
+</html>

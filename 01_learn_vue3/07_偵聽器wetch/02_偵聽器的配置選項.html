@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app"></div>
+  <template id="my-app">
+    <div>
+      <h2>{{info.name}}</h2>
+      <button @click="changeInfo">改變info</button>
+      <button @click="changeInfoName">改變info.name</button>
+    </div>
+  </template>
+  <script src="../js/vue.js"></script>
+  <script>
+    const app = {
+      template: '#my-app',
+      data() {
+        return {
+          message: "Hello World",
+          info: {
+            name: 'Renny',
+            age: 18
+          }
+        }
+      },
+      watch: {
+        // 默認情況下只會監聽數據本身的改變(內部的改變不會響應)
+        // info(newInfo, oldInfo) {
+        //   console.log(newInfo, oldInfo)
+        // }
+
+        // 深度監聽/立即執行(一定會執行一次)
+        info: {
+          handler(newInfo, oldInfo) {
+            console.log(newInfo, oldInfo)
+          },
+          deep: true,
+          immediate: true
+        }
+      },
+      methods: {
+        changeInfo() {
+          this.info = {
+            name: "kobe"
+          }
+        },
+        changeInfoName() {
+          this.info.name = "kobe"
+        }
+      },
+    }
+    Vue.createApp(app).mount('#app')
+  </script>
+</body>
+
+</html>
