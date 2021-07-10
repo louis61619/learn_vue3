@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <a href="/home">Home</a>
+      <a href="/about">About</a>
+      <div class="content">
+        default
+      </div>
+    </div>
+    <script>
+      // history無法本地開啟 瀏覽器無法解析這樣的路徑
+      const content = document.querySelector(".content");
+
+      const aEls = document.getElementsByTagName("a");
+      console.log(aEls);
+
+      const changeContent = () => {
+        switch (location.pathname) {
+            case "/home":
+              content.innerHTML = "Home";
+              break;
+            case "/about":
+              content.innerHTML = "About";
+              break;
+
+            default:
+              content.innerHTML = "Default";
+              break;
+          }
+      }
+
+      for (let aEl of aEls) {
+        aEl.addEventListener("click", (e) => {
+          e.preventDefault(); // 要優先組檔默認事件 不然參數會受到事件的影響
+          const href = aEl.getAttribute("href");
+          console.log(href);
+
+          history.pushState({}, "", href);
+          // history.replaceState({}, "", href);
+
+          changeContent()
+        });
+      }
+
+      window.addEventListener("popstate", changeContent) // 監聽回退事件
+    </script>
+  </body>
+</html>

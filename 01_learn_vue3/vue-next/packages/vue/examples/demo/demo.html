@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app"></div>
+
+  <template id="my-app">
+    <div>
+      {{ name }}
+    </div>
+    <h2>{{ message }}</h2>
+    <button @click="changeMessage">修改name</button>
+  </template>
+
+  <script src="../../dist/vue.global.js"></script>
+  
+  <script>
+    // 如果組件中有相同的屬性 會透過if判斷優先從setup -> data -> computed/method這樣的優先級獲取
+    const App = {
+      template: "#my-app",
+      data() {
+        return {
+          name: "Louis",
+          message: "--------"
+        }
+      },
+      methods: {
+        changeMessage() {
+          this.name = "Renny"
+        }
+      },
+      setup() {
+        const message = "LLLLL"
+
+        return {
+          message
+        }
+      },
+      beforeCreated() {
+
+      },
+      created() {
+
+      },
+      beforeMounted() {
+
+      },
+      mounted() {
+
+      },
+      beforeUpdated() {
+
+      },
+      updated() {
+
+      },
+      beforeUnmunted() {},
+      unmounted() {},
+
+    }
+    debugger;
+    const app = Vue.createApp(App)
+    app.mount('#app')
+  </script>
+</body>
+</html>

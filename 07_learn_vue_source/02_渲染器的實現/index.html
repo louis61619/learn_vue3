@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app"></div>
+  <script src="./render.js"></script>
+  <script>
+    // 通過h函數創建vnode
+    const vnode = h("div", {class: "why", id: "8888"}, [
+      h("h2", null, "0"),
+      h("button", {onClick: () => {counter++}}, "+1")
+    ])
+
+    // 通過mount函數 將vnode掛載到#app上
+    mount(vnode, document.querySelector('#app'))
+
+    // console.log(vnode)
+
+    // 創建新的vnode
+    // const node1 = h("h2", {class: "renny", id: "8888"}, "哈哈哈")
+    const node1 = h("div", {class: "why", id: "8888"}, [
+      h("h2", null, "1"),
+      h("button", {onClick: () => {counter++}}, "+2")
+    ])
+
+    // // 對比更新
+    patch(vnode, node1)
+    console.log(vnode, node1)
+
+
+    // mount(node1, document.querySelector('#app'))
+    
+    
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script src="./reactive.js"></script>
+  <!-- <script>
+    const obj = {
+      name: "888"
+    }
+    let o = "99999"
+    let b = "bbbbb" // 外部的變量是做為響應屬性修改的起點
+    Object.defineProperty(obj, "name", {
+      get() {
+        console.log("獲取")
+        return b
+      },
+      set(newValue) {
+        console.log("修改")
+        
+        b = newValue
+      }
+    })
+
+    console.log(obj.name)
+    obj.name = "Louis"
+
+    console.log(obj, b)
+  </script> -->
+  <!-- <script>
+    const obj = {
+      name: "iii"
+    }
+    let str = obj.name
+    str = "888"
+    console.log(obj)
+  </script> -->
+</body>
+</html>
