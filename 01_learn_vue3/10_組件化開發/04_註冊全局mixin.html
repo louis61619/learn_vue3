@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <!-- <test-component></test-component> -->
+    </div>
+    <template id="my-app">
+      <div>
+        <h2>{{message}}</h2>
+      </div>
+    </template>
+    <script src="../js/vue.js"></script>
+    <script>
+      const app = Vue.createApp({
+        myOption: "Hello App",
+      });
+
+      // 为自定义的选项 'myOption' 注入一个处理器。
+      app.mixin({
+        created() {
+          const myOption = this.$options.myOption;
+          if (myOption) {
+            console.log(myOption);
+          }
+        },
+      });
+
+      // 将myOption也添加到子组件
+      app.component("test-component", {
+        myOption: "hello from component!",
+      });
+
+      app.mount("#app");
+    </script>
+  </body>
+</html>
